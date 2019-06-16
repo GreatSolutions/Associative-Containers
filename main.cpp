@@ -8,8 +8,8 @@
 
 
 void set_function(){ 
-	// <set> eigenschaften:sortiert automatisch,ignoriert doppelte einträge des gleichen werts 
-	// für mehrfache einträge des gleichen werts std::multiset<int> verwenden.
+	// <set> eigenschaften:sortiert automatisch,ignoriert doppelte eintrÃ¤ge des gleichen werts 
+	// fÃ¼r mehrfache eintrÃ¤ge des gleichen werts std::multiset<int> verwenden.
 	std::set<int> s_set; // Default: std::set<int, std::less<int>> aufsteigende anordnung 
 						 //			 std::set<int, std::greater<int>> absteigende anordnung
 	s_set.insert(4);
@@ -17,7 +17,7 @@ void set_function(){
 	s_set.insert(9);
 	s_set.insert(6);
 	s_set.insert(7); 
-	s_set.insert(7);// nur möglich mit multiset
+	s_set.insert(7);// nur mÃ¶glich mit multiset
 
 	for (auto i = s_set.begin();i!= s_set.end();++i)
 	{
@@ -31,8 +31,8 @@ void map_function()
 	m_map.insert(std::pair<int, std::string>(2, "peter"));
 
 	std::cout << m_map.find(2)->second << std::endl; 
-	//find(key) gibt pointer auf die stelle zurück wo sich das element befindet
-	//Wird anschließend mit ->second dereferenziert um den gespeicherten wert zu erhalten.
+	//find(key) gibt pointer auf die stelle zurÃ¼ck wo sich das element befindet
+	//Wird anschlieÃŸend mit ->second dereferenziert um den gespeicherten wert zu erhalten.
 }
 
 void multimap_function()
@@ -89,6 +89,16 @@ int main(int argc, char* argv[])
 	pfade.insert(std::pair<Key, std::string>(key, "irgendwo"));
 
 	std::cout << pfade.find(key)->second << std::endl;
+
+	std::unordered_map<Key, std::vector<std::string>> pfade_2;
+	pfade_2[key].push_back("bla");
+	pfade_2[key].push_back("blso");
+
+	if(pfade_2[key].size() > 1)
+	{
+		std::cout << pfade_2.find(key)->second[1] << std::endl;
+	}
+	
 
 	return 0;	
 }
